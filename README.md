@@ -176,6 +176,42 @@ export class TabPanelComponent {
 
 And now let's integrate the styles, open the `src/app/shared/components/tab-panel/tab-panel.component.scss`:
 
+```scss
+[role='tabpanel'] {
+  position: relative;
+  z-index: 2;
+  padding: 0.5em 0.5em 0.7em;
+  border: 1px solid hsl(219, 1%, 72%);
+  border-radius: 0 0.2em 0.2em 0.2em;
+  box-shadow: 0 0 0.2em hsl(219, 1%, 72%);
+  background: hsl(220, 43%, 99%);
+}
+
+[role='tabpanel']:focus {
+  border-color: hsl(20, 96%, 48%);
+  box-shadow: 0 0 0.2em hsl(20, 96%, 48%);
+  outline: 0;
+}
+
+[role='tabpanel']:focus::after {
+  position: absolute;
+  bottom: 0;
+  right: -1px;
+  left: -1px;
+  border-bottom: 3px solid hsl(20, 96%, 48%);
+  border-radius: 0 0 0.2em 0.2em;
+  content: '';
+}
+
+[role='tabpanel'] p {
+  margin: 0;
+}
+
+[role='tabpanel'] * + p {
+  margin-top: 1em;
+}
+```
+
 ### Finish it
 
 All we have left is to use our new components, since this is an example I will use it directly in the AppComponent, go to `src/app/app.component.ts`:
